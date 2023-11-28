@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart' as dp;
+import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart'
+    as dp;
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
@@ -43,10 +44,9 @@ class _savedLocationState extends State<savedPage> {
                   Text(
                     'Saved Location',
                     style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold
-                    ),
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
                   ),
                   Icon(
                     Icons.favorite_border,
@@ -231,9 +231,9 @@ class ScheduleBtn extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         NotificationService().scheduleNotification(
-        title: 'Hey. Have you forgot your trip..',
-        body: 'Get Ready For Your Trip',
-        scheduleNotificationDateTime: scheduleTime);
+            title: 'Hey. Have you forgot your trip..',
+            body: 'Get Ready For Your Trip',
+            scheduleNotificationDateTime: scheduleTime);
         print('notification set for $scheduleTime');
         Fluttertoast.showToast(
           msg: 'We Will Notify Your Trip',
@@ -261,15 +261,18 @@ class _DatePickerTxtState extends State<DatePickerTxt> {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-        onPressed: () {
-          dp.DatePicker.showDateTimePicker(context,
-              showTitleActions: true,
-              onChanged: (date) => scheduleTime = date,
-              onConfirm: (date) {});
-        },
-        child: Text('Pick Date Time',
+      onPressed: () {
+        dp.DatePicker.showDateTimePicker(context,
+            showTitleActions: true,
+            onChanged: (date) => scheduleTime = date,
+            onConfirm: (date) {});
+      },
+      child: Text(
+        'Pick Date Time',
         style: TextStyle(
           color: Colors.grey,
-        ),));
+        ),
+      ),
+    );
   }
 }

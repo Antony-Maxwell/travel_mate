@@ -87,7 +87,7 @@ class _DetailedUploadedPlaceState extends State<DetailedUploadedPlace> {
                   widget.place.description!,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 15,
                   ),
                 ),
               ),
