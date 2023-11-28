@@ -180,18 +180,6 @@ class _userMainState extends State<userMain> {
                                           ),
                                           child: Column(
                                             children: [
-                                              Container(
-                                                alignment: Alignment.topRight,
-                                                child: IconButton(
-                                                  onPressed: () {},
-                                                  icon: Icon(
-                                                    Icons
-                                                        .bookmark_border_outlined,
-                                                    color: Colors.white,
-                                                    size: 30,
-                                                  ),
-                                                ),
-                                              ),
                                               Spacer(),
                                               Container(
                                                 alignment: Alignment.bottomLeft,

@@ -62,9 +62,15 @@ class _EditProfileState extends State<EditProfile> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 35, 35, 35),
       appBar: AppBar(
-        title: Text('Profile'),
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        title: Text('Edit Profile',
+        style: TextStyle(
+          color: Colors.white,
+        ),),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 35, 35, 35),
+        backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -454,7 +460,7 @@ class _EditProfileState extends State<EditProfile> {
                                       print('unable to update user details');
                                     }
                                   },
-                                  child: Text('Update'),
+                                  child: Text('Update',),
                                 ),
                               ],
                             );
@@ -463,6 +469,9 @@ class _EditProfileState extends State<EditProfile> {
                       },
                       child: Text(
                         'Update',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],
