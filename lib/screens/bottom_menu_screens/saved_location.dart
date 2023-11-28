@@ -267,6 +267,9 @@ class _DatePickerTxtState extends State<DatePickerTxt> {
               onChanged: (date) => scheduleTime = date,
               onConfirm: (date) {});
         },
-        child: Text('Pick Date Time'));
+        child: Text('Pick Date Time',
+        style: TextStyle(
+          color: Colors.grey,
+        ),));
   }
 }
