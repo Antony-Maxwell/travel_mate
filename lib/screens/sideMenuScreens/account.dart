@@ -102,7 +102,7 @@ class _accountPageState extends State<accountPage> {
                         ),
                       ),
             Text(
-              widget.username,
+              this.user!.username!,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 28,
@@ -136,6 +136,9 @@ class _accountPageState extends State<accountPage> {
               },
               child: Text(
                 'Edit Profile',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
             ),
             SizedBox(

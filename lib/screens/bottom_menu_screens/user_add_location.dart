@@ -160,8 +160,7 @@ class _addLocation_userState extends State<addLocation_user> {
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(
-                              color: const Color.fromARGB(255, 255, 255, 255)),
+                          borderSide: BorderSide(color: const Color.fromARGB(255, 255, 255, 255)),
                         ),
                       ),
                       style: TextStyle(

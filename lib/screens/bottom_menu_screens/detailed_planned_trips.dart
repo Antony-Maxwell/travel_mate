@@ -26,6 +26,12 @@ class DetailedPlannedTrips extends StatefulWidget {
 }
 
 class _DetailedPlannedTripsState extends State<DetailedPlannedTrips> {
+    final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
+    Future<void> refresh() async {
+      await Future.delayed(Duration(seconds: 1));
+      setState(() {
+      });
+    }
   int? income = 0;
   int? expense = 0;
 
@@ -133,66 +139,80 @@ class _DetailedPlannedTripsState extends State<DetailedPlannedTrips> {
                           ),
                         ),
                       ),
-                      FutureBuilder<List<Transactions>>(
-                        future: getTransactions(widget.placeName!),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.done) {
-                            if (snapshot.hasError) {
-                              return Center(
-                                child: Text(
-                                  'Error: ${snapshot.error}',
-                                  style: TextStyle(
-                                    color: Colors.white,
+                      SizedBox(height: 30,),
+                      RefreshIndicator(
+                        key: _refreshIndicatorKey,
+                        onRefresh: refresh,
+                        child: FutureBuilder<List<Transactions>>(
+                          future: getTransactions(widget.placeName!),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              if (snapshot.hasError) {
+                                return Center(
+                                  child: Text(
+                                    'Error: ${snapshot.error}',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
                                   ),
-                                ),
-                              );
-                            }
-
-                            final transactions = snapshot.data;
-                            if (transactions != null) {
-                              return transactions.isEmpty
-                            ? Center(
-                                child: Text(
-                                  'No transactions you have made.',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  )
-                                ),
-                              )
-                            : Container(
-                                height: 350,
-                                width: double.infinity,
-                                child: ListView.separated(
-                                  itemBuilder: (ctx, index) {
-                                    final transaction = transactions[index];
-                                    return ListTile(
-                                      title: Text(transaction.credit!),
-                                      trailing: Text(transaction.amt.toString()),
-                                    );
-                                  },
-                                  separatorBuilder: (ctx, index) {
-                                    return Divider();
-                                  },
-                                  itemCount: transactions.length,
-                                ),
-                              );
+                                );
+                              }
+                        
+                              final transactions = snapshot.data;
+                              if (transactions != null) {
+                                return transactions.isEmpty
+                              ? Center(
+                                  child: Text(
+                                    'No transactions you have made.',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    )
+                                  ),
+                                )
+                              : Container(
+                                  height: 350,
+                                  width: double.infinity,
+                                  child: ListView.separated(
+                                    itemBuilder: (ctx, index) {
+                                      final transaction = transactions[index];
+                                      return Container(
+                                        color: Colors.grey,
+                                        child: ListTile(
+                                          title: Text(transaction.credit!,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),),
+                                          trailing: Text(transaction.amt.toString(),
+                                          style: TextStyle(
+                                          color: Colors.white),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    separatorBuilder: (ctx, index) {
+                                      return Divider();
+                                    },
+                                    itemCount: transactions.length,
+                                  ),
+                                );
+                              } else {
+                                return Center(
+                                  child: Text(
+                                    'No transactions you have made yet.',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                );
+                              }
                             } else {
                               return Center(
-                                child: Text(
-                                  'No transactions you have made yet.',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
+                                child: CircularProgressIndicator(),
                               );
                             }
-                          } else {
-                            return Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          }
-                        },
+                          },
+                        ),
                       )
                     ],
                   ),

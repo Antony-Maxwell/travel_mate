@@ -66,60 +66,60 @@ class _UploadedPlacesListState extends State<UploadedPlacesList> {
               height: 700,
               color: Colors.transparent,
               child: uploadedPlaces.isEmpty
-                  ? Center(
-                      child: Text('No uploaded places found.',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                      ),
-                    )
-                  : ListView.separated(
-                      shrinkWrap: true,
-                      separatorBuilder: (context, index) => Divider(),
-                      itemCount: uploadedPlaces.length,
-                      itemBuilder: (context, index) {
-                        PlaceList place = uploadedPlaces[index];
-                        return Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Column(
-                            children: [
-                              InkWell(
-                                onTap: (){
-                                  final specificPlace = PlaceList(placeName: place.placeName, description: place.description, imageUrl: place.imageUrl);
-                                  Navigator.push(context, MaterialPageRoute(builder: (context){
-                                    return DetailedUploadedPlace(place: specificPlace,);
-                                  }));
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    border: Border.all(
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                  width: double.infinity,
-                                  height: 150,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(15),
-                                    child: Image.file(
-                                      File(place.imageUrl!),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
+            ? Center(
+                child: Text('No uploaded places found.',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+                ),
+              )
+            : ListView.separated(
+                shrinkWrap: true,
+                separatorBuilder: (context, index) => Divider(),
+                itemCount: uploadedPlaces.length,
+                itemBuilder: (context, index) {
+                  PlaceList place = uploadedPlaces[index];
+                  return Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(
+                      children: [
+                        InkWell(
+                          onTap: (){
+                            final specificPlace = PlaceList(placeName: place.placeName, description: place.description, imageUrl: place.imageUrl);
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return DetailedUploadedPlace(place: specificPlace,);
+                            }));
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              border: Border.all(
+                                color: Colors.grey,
                               ),
-                              Text(
-                                place.placeName!,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                ),
+                            ),
+                            width: double.infinity,
+                            height: 150,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: Image.file(
+                                File(place.imageUrl!),
+                                fit: BoxFit.cover,
                               ),
-                            ],
+                            ),
                           ),
-                        );
-                      },
+                        ),
+                        Text(
+                          place.placeName!,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
                     ),
+                  );
+                },
+              ),
             )
           ],
         ),

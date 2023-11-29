@@ -86,25 +86,23 @@ class _savedLocationState extends State<savedPage> {
                                       width: double.infinity,
                                       height: 200,
                                       child: location.imagePath
-                                              .startsWith('assets/')
-                                          ? ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                              child: Image.asset(
-                                                location.imagePath,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            )
-                                          : ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                              child: Image.file(
-                                                File(
-                                                  location.imagePath,
-                                                ),
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
+                                        .startsWith('assets/')
+                                    ? ClipRRect(
+                                        borderRadius: BorderRadius.circular(15),
+                                        child: Image.asset(
+                                          location.imagePath,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      )
+                                    : ClipRRect(
+                                        borderRadius: BorderRadius.circular(15),
+                                        child: Image.file(
+                                          File(
+                                            location.imagePath,
+                                          ),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
                                     ),
                                     Text(
                                       location.placeName ?? '',
@@ -114,8 +112,7 @@ class _savedLocationState extends State<savedPage> {
                                       ),
                                     ),
                                     Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         ElevatedButton(
                                           onPressed: () {
@@ -124,37 +121,22 @@ class _savedLocationState extends State<savedPage> {
                                               builder: (context) {
                                                 return AlertDialog(
                                                   title: Text('Remove'),
-                                                  content: Text(
-                                                      'Do you really want to remove the place from favourite'),
+                                                  content: Text('Do you really want to remove the place from favourite'),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () async {
-                                                        if (await removeFromSave(
-                                                            username,
-                                                            location.placeName!,
-                                                            location
-                                                                .imagePath)) {
-                                                          Fluttertoast
-                                                              .showToast(
-                                                            msg:
-                                                                '${location.placeName} is successfully removed',
-                                                            toastLength: Toast
-                                                                .LENGTH_SHORT,
-                                                            gravity:
-                                                                ToastGravity
-                                                                    .BOTTOM,
-                                                            backgroundColor:
-                                                                Colors.grey,
-                                                            textColor:
-                                                                Colors.white,
+                                                        if (await removeFromSave(username,location.placeName!,location.imagePath)) {
+                                                          Fluttertoast.showToast(
+                                                            msg:'${location.placeName} is successfully removed',
+                                                            toastLength: Toast.LENGTH_SHORT,
+                                                            gravity: ToastGravity.BOTTOM,
+                                                            backgroundColor: Colors.grey,
+                                                            textColor: Colors.white,
                                                           );
                                                           setState(() {
-                                                            savedLocations
-                                                                .remove(
-                                                                    location);
+                                                            savedLocations.remove(location);
                                                           });
-                                                          Navigator.pop(
-                                                              context);
+                                                          Navigator.pop(context);
                                                         }
                                                       },
                                                       child: Text('Remove'),

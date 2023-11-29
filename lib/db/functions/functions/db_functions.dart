@@ -13,11 +13,6 @@ Future<List<User>> getAllUsers(Box<User> users) async {
   return users.values.toList();
 }
 
-      Future<void> refresh() async {
-      await Future.delayed(Duration(seconds: 2));
-      // setState(() {
-      // });
-    }
 
 Future<List<UserPlannedTrips>> getallplannedTrips(
     Box<UserPlannedTrips> plannedTrips) async {
@@ -116,6 +111,12 @@ Future<User?> getUserCredentials(username) async {
     return userCredentials;
   }
   return null;
+}
+
+//create trip function
+
+Future<void>addTrip()async{
+
 }
 
 Future<void> getfavPlace() async {
@@ -254,6 +255,7 @@ Future<void> deleteUser(String username) async {
     if (userToDelete != null) {
       await userBox.delete(username);
     }
+    print('successfully deleted user $username');
   } catch (error) {
     print(error);
   }

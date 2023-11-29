@@ -119,58 +119,13 @@ class _createTripsState extends State<createTrips> {
                   Row(
                     children: <Widget>[
                       Flexible(
-                        child: TextFormField(
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                          controller: placeName,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Enter your destination';
-                            }
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                            labelText: 'PlaceName',
-                            labelStyle: TextStyle(color: Colors.blue[50]),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(15)
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15)
-                            )
-                          ),
-                        ),
+                        child: CustomTextFeild('Enter your destination', 'Destination', placeName, TextInputType.text)
                       ),
                       SizedBox(
                         width: 10,
                       ),
                       Flexible(
-                        child: TextFormField(
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                          controller: amount,
-                          keyboardType: TextInputType.number,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Enter your budget';
-                            }
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                            labelText: 'Amount',
-                            labelStyle: TextStyle(color: Colors.blue[50]),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(15)
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15)
-                            )
-                          ),
-                        ),
+                        child: CustomTextFeild('Enter your budget amount', 'Amount', amount, TextInputType.number)
                       ),
                     ],
                   ),
@@ -178,29 +133,7 @@ class _createTripsState extends State<createTrips> {
                     height: 10,
                   ),
                   Flexible(
-                    child: TextFormField(
-                      style: TextStyle(
-                            color: Colors.white,
-                          ),
-                      controller: items,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please note your items';
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                        labelText: 'Neccessary items for your trip',
-                        labelStyle: TextStyle(color: Colors.blue[50]),
-                        enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(15)
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15)
-                            )
-                      ),
-                    ),
+                    child: CustomTextFeild('Enter your items', 'Neccessary items for your trip', items, TextInputType.text)
                   ),
                   SizedBox(
                     height: 10,
@@ -208,30 +141,7 @@ class _createTripsState extends State<createTrips> {
                   Row(
                     children: <Widget>[
                       Flexible(
-                        child: TextFormField(
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                          controller: members,
-                          keyboardType: TextInputType.number,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Enter the number of members';
-                            }
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                            labelText: 'Members',
-                            labelStyle: TextStyle(color: Colors.blue[50]),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(15)
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15)
-                            )
-                          ),
-                        ),
+                        child: CustomTextFeild('Enter your number of members', 'Members', members, TextInputType.number)
                       ),
                       SizedBox(
                         width: 10,
@@ -309,7 +219,6 @@ class _createTripsState extends State<createTrips> {
                             plannedAmount: amount.text,
                             plannedThings: items.text,
                           );
-                          print('${placeName.text} and ${imagePath!.path} has added');
                           final userBox = await Hive.openBox<User>('users');
                           final currentUser = userBox.get(username.username);
                           if(currentUser != null){
@@ -353,27 +262,54 @@ class _createTripsState extends State<createTrips> {
     );
   }
 
+  TextFormField CustomTextFeild(String retMsg, String labelTxt, TextEditingController controller, TextInputType type) {
+    return TextFormField(
+      keyboardType:type ,
+      style: TextStyle(
+        color: Colors.white,
+      ),
+      controller: controller,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return retMsg;
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: labelTxt,
+        labelStyle: TextStyle(color: Colors.blue[50]),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+          borderRadius: BorderRadius.circular(15)
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15)
+        )
+      ),
+    );
+  }
+
   Widget buildIndicator() => AnimatedSmoothIndicator(
   onDotClicked: animateToSlide,
   effect: ExpandingDotsEffect(
   dotWidth: 5, dotHeight: 5, activeDotColor: Colors.blue),
-      activeIndex: activeIndex,
-      count: urlImages.length,
-      );
+  activeIndex: activeIndex,
+  count: urlImages.length,
+  );
 
   void animateToSlide(int index) => controller.animateToPage(index);
 
   Widget buildImage(String urlImage, int index) => Container(
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Image.asset(
-            urlImage,
-            fit: BoxFit.cover,
-          ),
-        ),
-      );
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Image.asset(
+        urlImage,
+        fit: BoxFit.cover,
+      ),
+    ),
+  );
 
-      Future pickImage(ImageSource source) async {
+  Future pickImage(ImageSource source) async {
     try {
       final image = await ImagePicker().pickImage(source: source);
       if (image == null) return;

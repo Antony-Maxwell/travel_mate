@@ -76,7 +76,7 @@ class AboutUsScreen extends StatelessWidget {
             TextButton(onPressed: (){
 
             }, child: Text(
-              'AntonyMaxwell619@gmail.com',
+              'travelMate@gmail.com',
             ))
           ],
         ),

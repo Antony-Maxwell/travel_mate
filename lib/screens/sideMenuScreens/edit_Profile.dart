@@ -78,200 +78,200 @@ class _EditProfileState extends State<EditProfile> {
           children: [
             Padding(padding: EdgeInsets.only(top: 70)),
             user?.profilePic != null
-                ? InkWell(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100),
-                      child: Image.file(
-                        File(user!.profilePic!),
-                        width: 200,
-                        height: 200,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    onTap: () {
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (context) {
-                          return Container(
-                            height: 190,
-                            color: Colors.grey,
-                            width: double.infinity,
-                            child: Column(
-                              children: [
-                                Text(
-                                  'Choose From',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                  ),
-                                ),
-                                Divider(),
-                                TextButton(
-                                  child: Text(
-                                    'Camera',
-                                    style: TextStyle(color: Colors.black),
-                                  ),
-                                  onPressed: () {
-                                    pickImage(ImageSource.camera);
-                                  },
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    pickImage(ImageSource.gallery);
-                                  },
-                                  child: Text(
-                                    'Gallery',
-                                    style: TextStyle(color: Colors.black),
-                                  ),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      this.image = null;
-                                    });
-                                  },
-                                  child: Text(
-                                    'Remove',
-                                    style: TextStyle(color: Colors.black),
-                                  ),
-                                ),
-                              ],
+          ? InkWell(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: Image.file(
+                  File(user!.profilePic!),
+                  width: 200,
+                  height: 200,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return Container(
+                      height: 190,
+                      color: Colors.grey,
+                      width: double.infinity,
+                      child: Column(
+                        children: [
+                          Text(
+                            'Choose From',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
                             ),
-                          );
-                        },
-                      );
-                    },
-                  )
-                : image == null
-                    ? InkWell(
-                        child: CircleAvatar(
-                          radius: 90,
-                          child: Icon(
-                            Icons.person,
-                            size: 150,
-                            color: Colors.white,
                           ),
-                        ),
-                        onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return Container(
-                                height: 190,
-                                color: Colors.grey,
-                                width: double.infinity,
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      'Choose From',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20,
-                                      ),
-                                    ),
-                                    Divider(),
-                                    TextButton(
-                                      child: Text(
-                                        'Camera',
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      onPressed: () {
-                                        pickImage(ImageSource.camera);
-                                      },
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        pickImage(ImageSource.gallery);
-                                      },
-                                      child: Text(
-                                        'Gallery',
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          this.image = null;
-                                        });
-                                      },
-                                      child: Text(
-                                        'Remove',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
+                          Divider(),
+                          TextButton(
+                            child: Text(
+                              'Camera',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                            onPressed: () {
+                              pickImage(ImageSource.camera);
                             },
-                          );
-                        },
-                      )
-                    : InkWell(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(100),
-                          child: Image.file(
-                            image!,
-                            width: 200,
-                            height: 200,
-                            fit: BoxFit.cover,
                           ),
-                        ),
-                        onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return Container(
-                                height: 190,
-                                color: Colors.grey,
-                                width: double.infinity,
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      'Choose From',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20,
-                                      ),
-                                    ),
-                                    Divider(),
-                                    TextButton(
-                                      child: Text(
-                                        'Camera',
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      onPressed: () {
-                                        pickImage(ImageSource.camera);
-                                      },
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        pickImage(ImageSource.gallery);
-                                      },
-                                      child: Text(
-                                        'Gallery',
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          this.image = null;
-                                        });
-                                      },
-                                      child: Text(
-                                        'Remove',
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
+                          TextButton(
+                            onPressed: () {
+                              pickImage(ImageSource.gallery);
                             },
-                          );
-                        },
+                            child: Text(
+                              'Gallery',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                this.image = null;
+                              });
+                            },
+                            child: Text(
+                              'Remove',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ),
+                        ],
                       ),
+                    );
+                  },
+                );
+              },
+            )
+          : image == null
+          ? InkWell(
+              child: CircleAvatar(
+                radius: 90,
+                child: Icon(
+                  Icons.person,
+                  size: 150,
+                  color: Colors.white,
+                ),
+              ),
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return Container(
+                      height: 190,
+                      color: Colors.grey,
+                      width: double.infinity,
+                      child: Column(
+                        children: [
+                          Text(
+                            'Choose From',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                          Divider(),
+                          TextButton(
+                            child: Text(
+                              'Camera',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                            onPressed: () {
+                              pickImage(ImageSource.camera);
+                            },
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              pickImage(ImageSource.gallery);
+                            },
+                            child: Text(
+                              'Gallery',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                this.image = null;
+                              });
+                            },
+                            child: Text(
+                              'Remove',
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              },
+            )
+          : InkWell(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: Image.file(
+                  image!,
+                  width: 200,
+                  height: 200,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return Container(
+                      height: 190,
+                      color: Colors.grey,
+                      width: double.infinity,
+                      child: Column(
+                        children: [
+                          Text(
+                            'Choose From',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                          Divider(),
+                          TextButton(
+                            child: Text(
+                              'Camera',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                            onPressed: () {
+                              pickImage(ImageSource.camera);
+                            },
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              pickImage(ImageSource.gallery);
+                            },
+                            child: Text(
+                              'Gallery',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                this.image = null;
+                              });
+                            },
+                            child: Text(
+                              'Remove',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
             Text(
               widget.username,
               style: TextStyle(
@@ -300,111 +300,19 @@ class _EditProfileState extends State<EditProfile> {
               child: Form(
                 child: Column(
                   children: [
-                    TextFormField(
-                      controller: _usernameController,
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 206, 205, 205),
-                      ),
-                      decoration: InputDecoration(
-                        labelText: "Username",
-                        labelStyle: TextStyle(color: Colors.grey),
-                        fillColor: Colors.white,
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            color: Colors.blue,
-                          ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            color: Colors.grey,
-                            width: 1.0,
-                          ),
-                        ),
-                      ),
-                    ),
+                    TextField(_usernameController, 'Username'),
                     SizedBox(
                       height: 10,
                     ),
-                    TextFormField(
-                      controller: _passwordController,
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 206, 205, 205),
-                      ),
-                      decoration: InputDecoration(
-                        labelText: "Password",
-                        labelStyle: TextStyle(color: Colors.grey),
-                        fillColor: Colors.white,
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            color: Colors.blue,
-                          ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            color: Colors.grey,
-                            width: 1.0,
-                          ),
-                        ),
-                      ),
-                    ),
+                    TextField(_passwordController, 'Password'),
                     SizedBox(
                       height: 10,
                     ),
-                    TextFormField(
-                      controller: _emailController,
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 206, 205, 205),
-                      ),
-                      decoration: InputDecoration(
-                        labelText: "Email",
-                        labelStyle: TextStyle(color: Colors.grey),
-                        fillColor: Colors.white,
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            color: Colors.blue,
-                          ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            color: Colors.grey,
-                            width: 1.0,
-                          ),
-                        ),
-                      ),
-                    ),
+                    TextField(_emailController, 'Email'),
                     SizedBox(
                       height: 10,
                     ),
-                    TextFormField(
-                      controller: _mobileController,
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 206, 205, 205),
-                      ),
-                      decoration: InputDecoration(
-                        labelText: "Mobile",
-                        labelStyle: TextStyle(color: Colors.grey),
-                        fillColor: Colors.white,
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            color: Colors.blue,
-                          ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            color: Colors.grey,
-                            width: 1.0,
-                          ),
-                        ),
-                      ),
-                    ),
+                    TextField(_mobileController, 'Mobile'),
                     SizedBox(
                       height: 30,
                     ),
@@ -433,33 +341,29 @@ class _EditProfileState extends State<EditProfile> {
                                     child: Text('Cancel')),
                                 TextButton(
                                   onPressed: () async {
-                                    if (widget.username != null) {
-                                      final userBox =
-                                          await Hive.openBox<User>('users');
-                                      final updatedUser = User(
-                                        username: _usernameController.text,
-                                        password: _passwordController.text,
-                                        email: _emailController.text,
-                                        mobileNum: _mobileController.text,
-                                        profilePic: (image != null)
-                                            ? image!.path
-                                            : user!.profilePic,
-                                      );
-
-                                      userBox.put(widget.username, updatedUser);
-                                      print('updated ${widget.username}');
-                                      Navigator.pop(context);
-                                      Fluttertoast.showToast(
-                                      msg: 'Details upated successfully',
-                                      toastLength: Toast.LENGTH_SHORT,
-                                      gravity: ToastGravity.BOTTOM,
-                                      backgroundColor: Colors.grey,
-                                      textColor: Colors.white,
+                                    final userBox =
+                                        await Hive.openBox<User>('users');
+                                    final updatedUser = User(
+                                      username: _usernameController.text,
+                                      password: _passwordController.text,
+                                      email: _emailController.text,
+                                      mobileNum: _mobileController.text,
+                                      profilePic: (image != null)
+                                          ? image!.path
+                                          : user!.profilePic,
                                     );
-                                    } else {
-                                      print('unable to update user details');
-                                    }
-                                  },
+
+                                    userBox.put(widget.username, updatedUser);
+                                    print('updated ${widget.username}');
+                                    Navigator.pop(context);
+                                    Fluttertoast.showToast(
+                                    msg: 'Details upated successfully',
+                                    toastLength: Toast.LENGTH_SHORT,
+                                    gravity: ToastGravity.BOTTOM,
+                                    backgroundColor: Colors.grey,
+                                    textColor: Colors.white,
+                                  );
+                                                                    },
                                   child: Text('Update',),
                                 ),
                               ],
@@ -479,6 +383,33 @@ class _EditProfileState extends State<EditProfile> {
               ),
             )
           ],
+        ),
+      ),
+    );
+  }
+
+  TextFormField TextField(TextEditingController controller, String label,) {
+    return TextFormField(
+      controller: controller,
+      style: TextStyle(
+        color: Color.fromARGB(255, 206, 205, 205),
+      ),
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(color: Colors.grey),
+        fillColor: Colors.white,
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25.0),
+          borderSide: BorderSide(
+            color: Colors.blue,
+          ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25.0),
+          borderSide: BorderSide(
+            color: Colors.grey,
+            width: 1.0,
+          ),
         ),
       ),
     );
