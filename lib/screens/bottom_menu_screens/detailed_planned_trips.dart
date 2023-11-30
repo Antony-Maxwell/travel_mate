@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:travel_mate/db/functions/functions/db_functions.dart';
 import 'package:travel_mate/db/functions/model/data_model.dart';
 
