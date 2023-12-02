@@ -19,7 +19,7 @@ class _SearchedPlaceState extends State<SearchedPlace> {
   void initState() {
     super.initState();
     _searchedPlace.addListener(_onSearchTextChanged);
-    yourSearchMethod("");
+    SearchMethod("");
   }
 
   @override
@@ -30,13 +30,13 @@ class _SearchedPlaceState extends State<SearchedPlace> {
 
   void _onSearchTextChanged()async {
     final query = _searchedPlace.text.toLowerCase();
-    final filteredResults = await yourSearchMethod(query);
+    final filteredResults = await SearchMethod(query);
     setState(() {
       searchResults = filteredResults;
     });
   }
 
-  Future<List<PlaceData>> yourSearchMethod(String query)async {
+  Future<List<PlaceData>> SearchMethod(String query)async {
     final List<PlaceData> results = [];
     // Search in each Hive box and add matching places to results
     results.addAll(await searchInBestPlaces(query));

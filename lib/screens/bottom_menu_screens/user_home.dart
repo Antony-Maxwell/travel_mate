@@ -169,9 +169,7 @@ class _userMainState extends State<userMain> {
                                               BorderRadius.circular(15),
                                         ),
                                         child: Container(
-                                          // width: 160,
                                           padding: EdgeInsets.all(20),
-                                          // margin: EdgeInsets.only(left: 15),
                                           decoration: BoxDecoration(
                                             color: Colors.black,
                                             borderRadius:
@@ -180,18 +178,6 @@ class _userMainState extends State<userMain> {
                                           ),
                                           child: Column(
                                             children: [
-                                              Container(
-                                                alignment: Alignment.topRight,
-                                                child: IconButton(
-                                                  onPressed: () {},
-                                                  icon: Icon(
-                                                    Icons
-                                                        .bookmark_border_outlined,
-                                                    color: Colors.white,
-                                                    size: 30,
-                                                  ),
-                                                ),
-                                              ),
                                               Spacer(),
                                               Container(
                                                 alignment: Alignment.bottomLeft,
@@ -301,48 +287,41 @@ class _userMainState extends State<userMain> {
                                     height: 200,
                                     decoration: BoxDecoration(
                                       border: Border.all(
-                                          color: Color.fromARGB(
-                                              255, 101, 101, 101)),
+                                      color: Color.fromARGB(255, 101, 101, 101)),
                                       borderRadius: BorderRadius.circular(15),
                                     ),
                                     child: Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
+                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
                                       height: 200,
                                       width: 400,
-                                      child:
-                                          place.imageUrl!.startsWith('assets/')
-                                              ? ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(15),
-                                                  child: Image.asset(
-                                                    place.imageUrl!,
-                                                    fit: BoxFit.cover,
-                                                  ))
-                                              : ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(15),
-                                                  child: Image.file(
-                                                    File(place.imageUrl!),
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
+                                      child: place.imageUrl!.startsWith('assets/')
+                                    ? ClipRRect(
+                                      borderRadius: BorderRadius.circular(15),
+                                      child: Image.asset(
+                                        place.imageUrl!,
+                                        fit: BoxFit.cover,
+                                      ))
+                                    : ClipRRect(
+                                        borderRadius: BorderRadius.circular(15),
+                                        child: Image.file(
+                                          File(place.imageUrl!),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(top: 10),
                                   child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         place.placeName ?? '',
                                         style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white),
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
                                       ),
                                       PopupMenuButton(
                                         iconColor: Colors.white,
@@ -373,21 +352,16 @@ class _userMainState extends State<userMain> {
                                                       TextButton(
                                                         onPressed: () async {
                                                           place.rating = rating;
-                                                          await placeBox.put(
-                                                              place.placeName,
-                                                              place);
-                                                          Navigator.pop(
-                                                              context);
+                                                          await placeBox.put(place.placeName,place);
+                                                          Navigator.pop(context);
                                                         },
                                                         child: Text('Submit'),
                                                       )
                                                     ],
-                                                    title:
-                                                        Text('Rate your place'),
+                                                    title:Text('Rate your place'),
                                                     content: RatingBar.builder(
                                                       minRating: 1,
-                                                      itemBuilder:
-                                                          (context, index) {
+                                                      itemBuilder:(context, index) {
                                                         return Icon(
                                                           Icons.star,
                                                           color: Colors.yellow,
@@ -421,8 +395,8 @@ class _userMainState extends State<userMain> {
                                     Text(
                                       '${place.rating ?? 0}',
                                       style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white),
+                                      fontSize: 18,
+                                      color: Colors.white),
                                     ),
                                   ],
                                 )

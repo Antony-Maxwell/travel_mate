@@ -9,6 +9,7 @@ import 'package:travel_mate/db/functions/model/category_data_model.dart';
 import 'package:travel_mate/db/functions/model/data_model.dart';
 import 'package:travel_mate/provider/navigation_Provider.dart';
 import 'package:travel_mate/provider/providerClass.dart';
+import 'package:travel_mate/screens/sideMenuScreens/aboutUs.dart';
 import 'package:travel_mate/widgets/adminWidgets/adminMain.dart';
 import 'package:travel_mate/screens/bottom_menu_screens/createTrips.dart';
 import 'package:travel_mate/authenthication/login.dart';
@@ -98,6 +99,7 @@ class _MyAppState extends State<MyApp> {
           '/adminMain' :(context) => adminMain(),
           '/bottomMenu' :(context) => homeBottomBar(),
           '/createTrips' :(context) => createTrips(),
+          '/aboutUs' : (context) => AboutUsScreen(),
         },
       ),
     );

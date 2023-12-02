@@ -16,11 +16,16 @@ class userDetails extends StatefulWidget {
 
 class _userDetailsState extends State<userDetails> {
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
+  Future<void> refresh() async {
+      await Future.delayed(Duration(seconds: 2));
+      setState(() {
+      });
+    }
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((_) { 
+    WidgetsBinding.instance.addPostFrameCallback((_) { 
       final tripState = Provider.of<TripStateNotifier>(context, listen: false);
       if(tripState.shouldRefresh){
         refresh();

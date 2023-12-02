@@ -56,7 +56,13 @@ class _accountPageState extends State<accountPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        title: Text('Profile',
+        style: TextStyle(
+          color: Colors.white,
+        ),),
         centerTitle: true,
         backgroundColor: Color.fromARGB(255, 35, 35, 35),
         elevation: 0,
@@ -96,7 +102,7 @@ class _accountPageState extends State<accountPage> {
                         ),
                       ),
             Text(
-              widget.username,
+              this.user!.username!,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 28,
@@ -130,6 +136,9 @@ class _accountPageState extends State<accountPage> {
               },
               child: Text(
                 'Edit Profile',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
             ),
             SizedBox(
@@ -299,7 +308,9 @@ class _accountPageState extends State<accountPage> {
                   ProfileSettings(
                     title: 'Information',
                     icon: Icons.info,
-                    onPress: () {},
+                    onPress: () {
+                    Navigator.pushNamed(context, '/aboutUs');
+                    },
                   ),
                   ProfileSettings(
                     title: 'Share TravelMate',
@@ -308,13 +319,13 @@ class _accountPageState extends State<accountPage> {
                       _shareContent();
                     },
                   ),
-                  ProfileSettings(
-                    title: 'LogOut',
-                    icon: Icons.logout,
-                    onPress: () {},
-                    textColor: Colors.red,
-                    endIcon: false,
-                  )
+                  // ProfileSettings(
+                  //   title: 'LogOut',
+                  //   icon: Icons.logout,
+                  //   onPress: () {},
+                  //   textColor: Colors.red,
+                  //   endIcon: false,
+                  // )
                 ],
               ),
             )

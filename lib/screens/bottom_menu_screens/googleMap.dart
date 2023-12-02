@@ -27,7 +27,6 @@ class _location_googleMapState extends State<location_googleMap> {
   LatLng? _currentP = null;
   LatLng? _destinationP;
   List<LatLng> routeCoordinates = [];
-  GoogleMapController? _controller;
   bool isVisible = false;
   MapType map = MapType.normal;
 

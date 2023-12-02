@@ -90,7 +90,7 @@ class _SideMenuState extends State<SideMenu> {
                                           accountPage(username: username),
                                     ));
                               } else if (index == 2) {
-                                Navigator.pushNamed(context, '/userMain');
+                                Navigator.pushNamed(context, '/aboutUs');
                               } else if (index == 3) {
                                 showDialog(
                                   context: context,
@@ -257,26 +257,3 @@ class _InfoCardState extends State<InfoCard> {
     );
   }
 }
-
-// void loggedOut(BuildContext ctx){
-//   showDialog(context: ctx, builder: (BuildContext context) {
-//     return AlertDialog(
-//       title: Text(
-//         'Log Out'
-//       ),
-//       content: SingleChildScrollView(
-//         child: ListBody(children: [
-//           Text(
-//             'Do you really want to log out ?'
-//           ),
-//         ]),
-//       ),
-//       actions: [
-//         TextButton(onPressed: (){
-//           final _sharedPrefs = await 
-//         }, child: Text('Log Out')),
-//         TextButton(onPressed: (){}, child: Text('Cancel')),
-//       ],
-//     );
-//   });
-// }
