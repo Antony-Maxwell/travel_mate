@@ -77,7 +77,7 @@ class _userMainState extends State<userMain> {
     'Share',
   ];
 
-  final String _content = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum diam ipsum, lobortis quis ultricies non, lacinia at justo.';
+  final String _content = 'https://www.amazon.com/dp/B0CLKWX2YH/ref=apps_sf_sta ';
 
   void _shareContent() {
     Share.share(_content);

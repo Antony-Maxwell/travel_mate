@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(25),
                           ),
                           labelText: 'Username',
                           labelStyle: TextStyle(
@@ -111,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(25),
                           ),
                           labelText: 'Password',
                           labelStyle: TextStyle(

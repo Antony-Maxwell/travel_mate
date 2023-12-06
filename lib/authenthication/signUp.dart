@@ -57,99 +57,11 @@ class _signUpState extends State<signUp> {
                   key: _formKey,
                   child: Column(
                     children: [
-                      TextFormField(
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                        controller: usernameSignedController,
-                        decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            color: Colors.blue,
-                          ),
-                        ),
-                          enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            color: Colors.grey,
-                            width: 1.0,
-                          ),
-                        ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          labelText: 'Username',
-                          labelStyle: TextStyle(
-                            color: Colors.grey,
-                          ),
-                          hintText: 'Username',
-                          hintStyle: TextStyle(
-                            color: Colors.grey
-                          )
-                        ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Enter atleast 4 characters';
-                          }
-                          return null;
-                        },
-                      ),
+                      textFormFeild(usernameSignedController, 'Username', 'Username','Enter atleast 4 characters'),
                       SizedBox(
                         height: 20,
                       ),
-                      TextFormField(
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                        controller: passwordSignedController,
-                        decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            color: Colors.blue,
-                          ),
-                        ),
-                          enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            color:  Colors.grey,
-                            width: 1.0,
-                          ),
-                        ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          labelText: 'Password',
-                          labelStyle: TextStyle(
-                            color: Colors.grey,
-                          ),
-                          hintText: 'Password',
-                          hintStyle: TextStyle(
-                            color: Colors.grey,
-                          ),
-                          suffixIcon: IconButton(
-                            icon: Icon(_isObscure
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                                color: Colors.grey,),
-                            onPressed: () {
-                              setState(() {
-                                _isObscure = !_isObscure;
-                              });
-                            },
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Enter atleast 4 characters';
-                          }
-                          return null;
-                        },
-                        obscureText: _isObscure,
-                      ),
+                      textFormFeild(passwordSignedController, 'Password', 'Password','Enter atleast 4 characters'),
                       SizedBox(height: 20,),
                       TextFormField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -172,7 +84,7 @@ class _signUpState extends State<signUp> {
                           ),
                         ),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(25),
                           ),
                           labelText: 'Gmail',
                           labelStyle: TextStyle(
@@ -264,6 +176,48 @@ class _signUpState extends State<signUp> {
           ],
         ),
       ),
+    );
+  }
+
+  TextFormField textFormFeild(TextEditingController controller, String labelTxt, String hintTxt, String retVal) {
+    return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      style: TextStyle(
+        color: Colors.white,
+      ),
+      controller: controller,
+      decoration: InputDecoration(
+        focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(25.0),
+        borderSide: BorderSide(
+          color: Colors.blue,
+        ),
+      ),
+        enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(25.0),
+        borderSide: BorderSide(
+          color: Colors.grey,
+          width: 1.0,
+        ),
+      ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25),
+        ),
+        labelText: labelTxt,
+        labelStyle: TextStyle(
+          color: Colors.grey,
+        ),
+        hintText: hintTxt,
+        hintStyle: TextStyle(
+          color: Colors.grey
+        )
+      ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return retVal;
+        }
+        return null;
+      },
     );
   }
 }
