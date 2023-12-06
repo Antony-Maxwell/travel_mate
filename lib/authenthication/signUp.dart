@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:travel_mate/db/functions/functions/db_functions.dart';
-import 'package:lottie/lottie.dart';
 import 'package:email_validator/email_validator.dart';
 
 class signUp extends StatefulWidget {
